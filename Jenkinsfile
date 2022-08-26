@@ -25,6 +25,7 @@ pipeline {
                     -Dsonar.sources=src/main/kotlin \
                     -Dsonar.java.binaries=build/classes \
                     -Dsonar.tests=src/test/kotlin
+                }
             }
         }
     }
