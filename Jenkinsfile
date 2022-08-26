@@ -24,7 +24,7 @@ pipeline {
                     -Dsonar.projectName=labgradle01 \
                     -Dsonar.sources=src/main/kotlin \
                     -Dsonar.java.binaries=build/classes \
-                    -Dsonar.tests=src/test/kotlin
+                    -Dsonar.tests=src/test/kotlin"
                 }
             }
         }
