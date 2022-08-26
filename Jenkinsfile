@@ -5,13 +5,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh './gradlew build'
+                sh 'gradle build'
                 archiveArtifacts artifacts: 'build/libs/labgradle-*-SNAPSHOT.jar', fingerprint: true
             }
         }
         stage('Test') {
             steps {
-                sh './gradlew test'
+                sh 'gradle test'
                 junit '**/build/test-results/test/TEST-*.xml'
             }
         }
