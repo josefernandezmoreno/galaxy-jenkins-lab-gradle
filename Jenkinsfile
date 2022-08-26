@@ -17,14 +17,16 @@ pipeline {
         }
         stage('SonarQube') {
             steps {
-                def scannerHome = tool 'scanner-default'
-                withSonarQubeEnv('sonar-server') {
-                    sh "${scannerHome}/bin/sonar-scanner \
-                    -Dsonar.projectKey=labgradle01 \
-                    -Dsonar.projectName=labgradle01 \
-                    -Dsonar.sources=src/main/kotlin \
-                    -Dsonar.java.binaries=build/classes \
-                    -Dsonar.tests=src/test/kotlin"
+                script{
+                    def scannerHome = tool 'scanner-default'
+                    withSonarQubeEnv('sonar-server') {
+                        sh "${scannerHome}/bin/sonar-scanner \
+                        -Dsonar.projectKey=labgradle01 \
+                        -Dsonar.projectName=labgradle01 \
+                        -Dsonar.sources=src/main/kotlin \
+                        -Dsonar.java.binaries=build/classes \
+                        -Dsonar.tests=src/test/kotlin"
+                    }
                 }
             }
         }
