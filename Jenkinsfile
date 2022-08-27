@@ -14,10 +14,13 @@ pipeline {
                     }
             }
             stage('Test') {
-                steps {
-                    sh 'gradle test'
-                    junit 'build/test-results/test/TEST-*.xml'
+                agent {
+                    docker { image 'gradle:7.5.1-jdk11' }
                 }
+                    steps {
+                        sh 'gradle test'
+                        junit 'build/test-results/test/TEST-*.xml'
+                    }
             }
             stage('SonarQube') {
                 steps {
