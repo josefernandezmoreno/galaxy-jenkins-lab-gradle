@@ -75,7 +75,7 @@ pipeline {
                     steps {
                         script {
                             sh 'docker ps'
-                            sh 'curl http://localhost:8080/customers'
+                            sh 'curl http://192.168.1.17:8080/customers'
                         }
                     }
             }
