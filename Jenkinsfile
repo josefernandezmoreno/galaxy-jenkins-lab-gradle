@@ -19,7 +19,7 @@ pipeline {
                 }
             }
             stage('SonarQube') {
-                agent any
+                agent none
                     steps {
                         script{
                             def scannerHome = tool 'scanner-default'
@@ -35,7 +35,7 @@ pipeline {
                     }
             }
             stage('Build Image') {
-                agent any
+                agent none
                     steps {
                         copyArtifacts filter: 'build/libs/labgradle-*-SNAPSHOT.jar',
                                         fingerprintArtifacts: true,
@@ -49,7 +49,7 @@ pipeline {
                     }
             }
             stage('Publish Image') {
-                agent any
+                agent none
                     steps {
                         script {
                             sh 'docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}'
@@ -60,7 +60,7 @@ pipeline {
                     }
             }
             stage('Run Container') {
-                agent any
+                agent none
                     steps {
                         script {
                             sh 'docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}'
